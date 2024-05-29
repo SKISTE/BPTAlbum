@@ -54,12 +54,13 @@ body {
     rgba(19, 19, 19, 1) 50%
   );
 }
+
 .wrapper:has(+ * + * + .selected) {
   display: flex;
   position: absolute;
   top: 50%;
   left: calc(50% - var(--image-size));
-  transform: translate3d(-50%, -50%, 0) scale(0);
+  transform: translate(-50%, -50%) scale(0);
   opacity: 0;
   z-index: 0;
 }
@@ -68,7 +69,7 @@ body {
   position: absolute;
   top: 50%;
   left: calc(50% - var(--image-size) / 2);
-  transform: translate3d(-50%, -50%, 0) scale(0.4);
+  transform: translate(-50%, -50%) scale(0.4);
   opacity: .3;
   z-index: 1;
 }
@@ -77,24 +78,27 @@ body {
   position: absolute;
   top: 50%;
   left: calc(50% - var(--image-size) / 4);
-  transform: translate3d(-50%, -50%, 0) scale(0.6);
+  transform: translate(-50%, -50%) scale(0.6); 
   opacity: .5;
   z-index: 2;
 }
+
 .selected {
   display: flex;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate(-50%, -50%);
   z-index: 3;
 }
+
+
 .selected + .wrapper {
   display: flex;
   position: absolute;
   top: 50%;
   left: calc(50% + var(--image-size) / 4);
-  transform: translate3d(-50%, -50%, 0) scale(0.6);
+  transform: translate(-50%, -50%) scale(0.6); 
   opacity: .2;
   z-index: 2;
 }
@@ -103,7 +107,7 @@ body {
   position: absolute;
   top: 50%;
   left: calc(50% + var(--image-size) / 2);
-  transform: translate3d(-50%, -50%, 0) scale(0.4);
+  transform: translate(-50%, -50%) scale(0.4);
   opacity: .2;
   z-index: 1;
 }
@@ -112,10 +116,12 @@ body {
   position: absolute;
   top: 50%;
   left: calc(50% + var(--image-size));
-  transform: translate3d(-50%, -50%, 0) scale(0);
+  transform: translate(-50%, -50%) scale(0);
   opacity: 0;
   z-index: 0;
 }
+
+
 .arrows {
   position: absolute;
   bottom: 0;
@@ -164,6 +170,6 @@ body {
   fill: #fff;
 }
 img {
-    width: 500px;
+    width: var(--image-size);
     border-radius: 6px;
 }
