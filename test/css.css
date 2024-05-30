@@ -62,6 +62,7 @@ body {
   }
   ul::-webkit-scrollbar-thumb:hover {
 	background: transparent;
+	/* background: url('../thumbs/\(10\).jpg'); */
 	background: radial-gradient(#888, #ccc);
   }
   

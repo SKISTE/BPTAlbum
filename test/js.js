@@ -79,7 +79,7 @@ document.body.addEventListener('scroll',refreshBars)
 function OpenImage(elem) {
 	big_image.style.display = 'flex'
 	big_image.style.animation = 'show .5s ease-in-out forwards'
-	img_in_big.src = elem.src
+	img_in_big.src = '../images/'+elem.dataset.image
 }
 function CloseImage() {
 	big_image.style.animation = 'close .5s ease-in-out forwards'
@@ -92,7 +92,7 @@ function CloseImage() {
 images = []
 for (let x = 0; x < 48; x++) {
 	let elem = x+1
-	images.push('../images/ ('+elem+').jpg')
+	images.push(' ('+elem+').jpg')
 }
 
 
@@ -103,7 +103,7 @@ for (let x = 0; x < images.length; x++) {
 	let li = document.createElement('li')
 
 	// li.innerHTML = `<img id="img_${x}" src="https://masterpiecer-images.s3.yandex.net/c352b1b9801c11ee9607720ccb3e265f:upscaled" alt="SAMPLE TEXT" onclick='OpenImage(this)'/> SAMPLE TEXT`
-	li.innerHTML = `<img id="img_${x}" src="${element}" alt="SAMPLE TEXT" onclick='OpenImage(this)'/> SAMPLE TEXT`
+	li.innerHTML = `<img id="img_${x}" src="../thumbs/${element}" data-image="${element}" alt="SAMPLE TEXT" onclick='OpenImage(this)'/> SAMPLE TEXT`
 
 	
 	container.appendChild(li)
