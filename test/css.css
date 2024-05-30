@@ -23,6 +23,7 @@ body {
   }
   main ul {
 	list-style-type: none; /* No bullet points */
+	padding: 0;
   }
   
   main img {
@@ -104,7 +105,7 @@ body {
 	height: 100%;
 	/* overflow: hidden; */
 	margin: 0;
-	padding: 0;
+	padding: 0px;
 	list-style-type: none;
 	text-align: center;
 
