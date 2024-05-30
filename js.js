@@ -104,7 +104,7 @@ for (let x = 0; x < images.length; x++) {
 	let li = document.createElement('li')
 
 	// li.innerHTML = `<img id="img_${x}" src="https://masterpiecer-images.s3.yandex.net/c352b1b9801c11ee9607720ccb3e265f:upscaled" alt="SAMPLE TEXT" onclick='OpenImage(this)'/> SAMPLE TEXT`
-	li.innerHTML = `<img id="img_${x}" src="thumbs/${element}" data-image="${element}" alt="SAMPLE TEXT" onclick='OpenImage(this)'/> SAMPLE TEXT`
+	li.innerHTML = `<img id="img_${x}" src="thumbs/${element}" data-image="${element}" alt="SAMPLE TEXT" onclick='OpenImage(this)'/>`
 
 	
 	container.appendChild(li)

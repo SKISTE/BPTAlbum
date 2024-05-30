@@ -1,9 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC&display=swap');
 *{
 	/* outline: 2px solid green; */
 }
+
+.cool_font {
+	font-family: "LXGW WenKai Mono TC", monospace;
+	font-style: normal;
+  }
+
 body {
 	margin: 0;
 	padding: 0;
+  }
+  a{
+	color: white;
+  }
+  a:visited{
+	color: white;
   }
   
   /* Style images and container */
