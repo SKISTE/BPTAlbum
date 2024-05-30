@@ -3,26 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Фото галерея</title>
-    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="css.css">
 </head>
 <body>
-    <div class="gallery">
-        <div id="slider" class="slider">
-        </div>
-        <div class="arrows">
-            <div class="left">
-            <svg viewBox="0 0 512 512" width="100" title="chevron-circle-left">
-                <path d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z" />
-            </svg>
-            </div>
-            <div class="right">
-            <svg viewBox="0 0 512 512" width="100" title="chevron-circle-right">
-                <path d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z" />
-            </svg>
-            </div>
-        </div>
+    <div id="big_image" onclick="CloseImage()"> 
+        <img src="loading.gif" onclick="CloseImage()" id="img_in_big" alt="" srcset="">
     </div>
-    <script src="js.js"></script>
+    <div id="bar_before">
+        <ul>
+          <!--Image thumbnails added using JS-->
+        </ul>
+      </div>
+      <main onscroll="refreshBars()">
+        <ul>
+          <!-- <li> <img id="img_0" src="../images/ (1).jpg" alt="SAMPLE TEXT" /> SAMPLE TEXT</li>
+          <li> <img id="img_1" src="../images/ (2).jpg" alt="SAMPLE TEXT " />SAMPLE TEXT</li>
+          <li> <img id="img_2" src="../images/ (3).jpg" alt="a bunch of blueberries. " />A Bunch of Blueberries.</li>
+          <li> <img id="img_3" src="../images/ (4).jpg" alt="a pineapple sitting on a table. " />A Pineapple Sitting on a Table.</li>
+          <li> <img id="img_4" src="../images/ (5).jpg" alt="frozen raspberries. " /> Frozen Raspberries.</li>
+          <li> <img id="img_5" src="../images/ (6).jpg" alt="a sliced strawberry. " />A Sliced Strawberry.</li>
+          <li> <img id="img_6" src="../images/ (7).jpg" alt="an arrangement of assorted sliced fruits. " />An Arrangement of Assorted Sliced Fruits.</li>
+          <li> <img id="img_7" src="../images/ (8).jpg" alt="sliced watermelons. " />Sliced Watermelons.</li>
+          <li> <img id="img_8" src="../images/ (9).jpg" alt="grapefruits, lemons, and pomegranates. " />Grapefruits, Lemons, and Pomegranates.</li>
+          <li> <img id="img_9" src="../images/ (10).jpg" alt="half of an avocado. " />Half of an Avocado.</li>
+          <li> <img id="img_10" src="../images/ (11).jpg" alt="half of a lime. " />Half of a Lime.</li>
+          <li> <img id="img_11" src="../images/ (12).jpg" alt="a single cherry with stem. " />A Single Cherry with Stem.</li>
+          <li> <img id="img_12" src="../images/ (13).jpg" alt="a bunch of bananas. " />A Bunch of Bananas.</li>
+          <li> <img id="img_13" src="../images/ (14).jpg" alt="three pears. " />Three Pears.</li>
+          <li> <img id="img_14" src="../images/ (15).jpg" alt="a basket full of peaches next to a plate with sliced peaches. " />A Basket Full of Peaches next to a Plate with Sliced Peaches.</li>
+          <li> <img id="img_15" src="../images/ (16).jpg" alt="a bowl of avocados. " />A Bowl of Avocados.</li> -->
+        </ul>
+      </main>
+      <div id="bar_after">
+        <ul>
+          <!--Image thumbnails added using JS-->
+        </ul>
+      </div>
+<script src="js.js"></script>
 </body>
 </html>

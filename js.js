@@ -1,98 +1,117 @@
-const gallery = document.getElementById("slider");
-const left = document.getElementsByClassName("left")[0];
-left.classList.add("disabled");
-const right = document.getElementsByClassName("right")[0];
+function whereIs(element) {
+	/* Is element visible in viewport? Return "b" if before, "v" if visible and "a" if after */
+	const rect = element.getBoundingClientRect();
+	if (
+	  rect.top >= 0 &&
+	  rect.left >= 0 &&
+	  rect.bottom <=
+		(window.innerHeight || document.documentElement.clientHeight) &&
+	  rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+	)
+	  return "v"; // Visible
+	if (rect.top < 0 || rect.left < 0) return "b"; // Before
+	return "a"; // After
+  }
+  
+  function loadBars() {
+	let imgs = document.querySelectorAll("main img"); // All main images
+	let bar_before = document.querySelector("#bar_before ul");
+	let bar_after = document.querySelector("#bar_after ul");
+	for (let i = 0; i < imgs.length; i++) {
+	  let img = imgs[i];
+	  let where_is = whereIs(img);
+	  /* Append HTML of image to bars */
+	  bar_before.insertAdjacentHTML(
+		"beforeend",
+		`<li ${where_is == "b" ? "" : "class='hidden'"} id="bb_${
+		  img.id
+		}"> <a href="#${img.id}"><img src="${img.src}" alt="${
+		  img.alt
+		}" /></a></li>`
+	  ); // Add class as hidden if is not before
+	  bar_after.insertAdjacentHTML(
+		"beforeend",
+		`<li ${where_is == "a" ? "" : "class='hidden'"} id="ba_${
+		  img.id
+		}"> <a href="#${img.id}"><img src="${img.src}" alt="${
+		  img.alt
+		}" /></a></li>`
+	  );
+	  
+	}
+  }
+  
+  window.onload = loadBars; // Load bars on page load
+  
+  function refreshBars() {
+	let imgs = document.querySelectorAll("main img"); // All main images
+  
+	/* For each img */
+	for (let i = 0; i < imgs.length; i++) {
+	  let img = imgs[i];
+	  let where_is = whereIs(img);
+  
+	  /* Change class of images if needed */
+		document.querySelector(`#bb_${img.id}`).className =
+		where_is == "b" ? "" : "hidden"; // Visible if before current - show on *before* bar
 
-var startTime, endTime;
-function start_timer() {
-  console.log('start count elapse time')
-  startTime = performance.now();
-};
+		document.querySelector(`#ba_${img.id}`).className =
+		where_is == "a" ? "" : "hidden"; // Visible if before current - show on *after* bar
+		
+		if(where_is == 'v') {
+			document.querySelector(`#bb_${img.id}`).scrollIntoView({
+				behavior: 'auto',
+				inline: 'center'
+			});
+			document.querySelector(`#ba_${img.id}`).scrollIntoView({
+				behavior: 'auto',
+				inline: 'center'
+			});
+			
+			
+		}
+		
+	}
+  }
 
-function end_timer() {
-  endTime = performance.now();
-  var timeDiff = endTime - startTime; //in ms
-  console.log(timeDiff + " elapsed time");
+document.body.addEventListener('scroll',refreshBars)
+  
+function OpenImage(elem) {
+	big_image.style.display = 'flex'
+	big_image.style.animation = 'show .5s ease-in-out forwards'
+	img_in_big.src = 'images/'+elem.dataset.image
+}
+function CloseImage() {
+	big_image.style.animation = 'close .5s ease-in-out forwards'
+	setTimeout(function() {
+		big_image.style.display = 'none'
+		img_in_big.src = 'loading.gif'
+	},500)
 }
 
-const imagesUrl = [
-  // 'https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_655dd52aeece0b744ad0048e_655dfa4311aa97744330de27/scale_1200',
-  // 'https://img.freepik.com/free-photo/fresh-yellow-daisy-single-flower-close-up-beauty-generated-by-ai_188544-15543.jpg?size=626&ext=jpg&ga=GA1.1.44546679.1716681600&semt=ais_user',
-  // 'https://img2.akspic.ru/previews/2/7/7/4/7/174772/174772-skelet-18650-past-rebro-kost-500x.jpg',
-  // 'https://png.pngtree.com/thumb_back/fw800/background/20230610/pngtree-picture-of-a-blue-bird-on-a-black-background-image_2937385.jpg',
-  // 'https://static.insales-cdn.com/images/products/1/2336/567986464/WhatsApp_Image_2022-07-13_at_23.31.04__3_.jpeg_-_%D0%A1%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%BE_%D0%BF%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B0_%D1%84%D0%BE%D1%82%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%B9_Wiows.png',
-  // 'https://w7.pngwing.com/pngs/835/230/png-transparent-desktop-marble-wall-decal-marble-miscellaneous-texture-branch-thumbnail.png',
-  // 'https://cs6.pikabu.ru/post_img/big/2017/06/30/4/1498801619124951735.jpg',
-  // 'https://masterpiecer-images.s3.yandex.net/34e974e177bb11ee9ad5ceda526c50ab:upscaled'
-];
-
+// ADD IMAGES
+images = []
 for (let x = 0; x < 48; x++) {
-  let elem = x+1
-  imagesUrl.push('images/ ('+elem+').jpg')
+	let elem = x+1
+	images.push(' ('+elem+').jpg')
 }
 
-const images = imagesUrl.length;
 
-var selected = 0;
+let container = document.querySelector('main').querySelector('ul')
+for (let x = 0; x < images.length; x++) {
+	const element = images[x];
+	console.log(element)
+	let li = document.createElement('li')
 
-function init() {
-  for (var i = 0; i < images; i++) {
-    var imageWrapper = document.createElement("div");
-    imageWrapper.id = `image_${i}`;
-    imageWrapper.classList.add("wrapper");
-    if (i === selected) {
-      imageWrapper.classList.add("selected");
-    }
-    var image = document.createElement("img");
-    image.src = imagesUrl[i]
-    imageWrapper.appendChild(image);
-    var mirrored = image.cloneNode();
-    mirrored.classList.add("flipped");
-    imageWrapper.appendChild(mirrored);
-    gallery.appendChild(imageWrapper);
-  }
+	// li.innerHTML = `<img id="img_${x}" src="https://masterpiecer-images.s3.yandex.net/c352b1b9801c11ee9607720ccb3e265f:upscaled" alt="SAMPLE TEXT" onclick='OpenImage(this)'/> SAMPLE TEXT`
+	li.innerHTML = `<img id="img_${x}" src="thumbs/${element}" data-image="${element}" alt="SAMPLE TEXT" onclick='OpenImage(this)'/> SAMPLE TEXT`
+
+	
+	container.appendChild(li)
 }
 
-init();
-
-right.onclick = function () {
-  start_timer()
-  selected++;
-  if (selected > images - 1) {
-    selected = images - 1;
-  }
-  handleSelection();
-  end_timer()
-};
-
-left.onclick = function () {
-  start_timer()
-  selected--;
-  if (selected < 0) {
-    selected = 0;
-  }
-  handleSelection();
-  end_timer()
-};
-
-function handleSelection() {
-  var images = document.getElementsByClassName("wrapper");
-  if (selected === images.length - 1) {
-    right.classList.add("disabled");
-  } else {
-    right.classList.remove("disabled");
-  }
-  if (selected === 0) {
-    left.classList.add("disabled");
-  } else {
-    left.classList.remove("disabled");
-  }
-  for (var i = 0; i < images.length; i++) {
-    var img = images[i];
-    if (img.id === `image_${selected}`) {
-      img.classList.add("selected");
-    } else {
-      img.classList.remove("selected");
-    }
-  }
-}
+// let temp = document.querySelectorAll('img')
+// for (let x = 0; x < temp.length; x++) {
+// 	const element = temp[x];
+// 	element.setAttribute('onclick','OpenImage(this)')
+// }
