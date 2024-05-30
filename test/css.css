@@ -147,15 +147,21 @@ body {
   }
   #bar_before ul li.hidden,
   #bar_after ul li.hidden {
-	opacity: 0;
+	/* opacity: 0; */
+	animation: hide_image .5s ease-in-out forwards;
 	pointer-events: none;
 	transition: all 0.5s;
+  }
+  @keyframes hide_image {
+	0%{opacity: 1;}
+	100%{opacity: 0;}
   }
   #bar_before ul li.hidden img,
   #bar_after ul li.hidden img {
 	margin: 50%;
 	height: 0;
 	width: 0;
+	animation: hide_image .5s ease-in-out forwards;
 	transition: all 0.5s;
   }
   
