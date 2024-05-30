@@ -1,3 +1,6 @@
+*{
+	/* outline: 2px solid green; */
+}
 body {
 	margin: 0;
 	padding: 0;
@@ -33,6 +36,7 @@ body {
   
   ::-webkit-scrollbar {
 	width: 1vmin;
+	height: 1vmin;
   }
   ::-webkit-scrollbar-track {
 	background: transparent;
@@ -42,6 +46,22 @@ body {
 	border-radius: 2.5vmin;
   }
   ::-webkit-scrollbar-thumb:hover {
+	background: radial-gradient(#888, #ccc);
+  }
+  ul::-webkit-scrollbar {
+	width: 1vmin;
+	height: .1vmin;
+  }
+  ul::-webkit-scrollbar-track {
+	background: transparent;
+  }
+  ul::-webkit-scrollbar-thumb {
+	background: radial-gradient(#ccc, white);
+	background: transparent;
+	border-radius: 2.5vmin;
+  }
+  ul::-webkit-scrollbar-thumb:hover {
+	background: transparent;
 	background: radial-gradient(#888, #ccc);
   }
   
@@ -73,6 +93,7 @@ body {
 	background: #111111;
 	width: calc(100vw - 4vmin);
 	height: 6vmin;
+	/* overflow-x: auto; */
 	padding: 2vmin;
 	text-align: center;
   }
@@ -80,12 +101,18 @@ body {
   #bar_before ul,
   #bar_after ul {
 	height: 100%;
-	overflow: hidden;
+	/* overflow: hidden; */
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
 	text-align: center;
-	display: grid;
+
+	/* display: grid; */
+
+	display: flex;
+	/* display: inline; */
+	
+	overflow-x: scroll;
 	grid-template-rows: 6vmin;
 	grid-template-columns: repeat(16, 6vmin);
 	grid-gap: 1vmin;
@@ -99,17 +126,23 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
+	min-width: 30px;
+	/* width: 10%; */
+	/* width: 1000px; */
 	transition: all 0.5s;
   }
   
   #bar_before ul li img,
   #bar_after ul li img {
-	height: 100%;
+	max-height: 100%;
 	width: 100%;
 	margin: 0;
 	padding: 0;
 	display: block;
 	transition: all 0.5s;
+	/* min-height: 100%; */
+	/* min-width: 100%; */
+	object-fit: cover;
   }
   #bar_before ul li.hidden,
   #bar_after ul li.hidden {

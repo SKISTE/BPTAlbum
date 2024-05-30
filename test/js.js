@@ -37,6 +37,7 @@ function whereIs(element) {
 		  img.alt
 		}" /></a></li>`
 	  );
+	  
 	}
   }
   
@@ -51,13 +52,29 @@ function whereIs(element) {
 	  let where_is = whereIs(img);
   
 	  /* Change class of images if needed */
-	  document.querySelector(`#bb_${img.id}`).className =
+		document.querySelector(`#bb_${img.id}`).className =
 		where_is == "b" ? "" : "hidden"; // Visible if before current - show on *before* bar
-  
-	  document.querySelector(`#ba_${img.id}`).className =
+
+		document.querySelector(`#ba_${img.id}`).className =
 		where_is == "a" ? "" : "hidden"; // Visible if before current - show on *after* bar
+		
+		if(where_is == 'v') {
+			document.querySelector(`#bb_${img.id}`).scrollIntoView({
+				behavior: 'auto',
+				inline: 'center'
+			});
+			document.querySelector(`#ba_${img.id}`).scrollIntoView({
+				behavior: 'auto',
+				inline: 'center'
+			});
+			
+			
+		}
+		
 	}
   }
+
+document.body.addEventListener('scroll',refreshBars)
   
 function OpenImage(elem) {
 	big_image.style.display = 'flex'
@@ -84,7 +101,11 @@ for (let x = 0; x < images.length; x++) {
 	const element = images[x];
 	console.log(element)
 	let li = document.createElement('li')
+
+	// li.innerHTML = `<img id="img_${x}" src="https://masterpiecer-images.s3.yandex.net/c352b1b9801c11ee9607720ccb3e265f:upscaled" alt="SAMPLE TEXT" onclick='OpenImage(this)'/> SAMPLE TEXT`
 	li.innerHTML = `<img id="img_${x}" src="${element}" alt="SAMPLE TEXT" onclick='OpenImage(this)'/> SAMPLE TEXT`
+
+	
 	container.appendChild(li)
 }
 
