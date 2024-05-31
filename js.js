@@ -23,7 +23,7 @@ function whereIs(element) {
 	  /* Append HTML of image to bars */
 	  bar_before.insertAdjacentHTML(
 		"beforeend",
-		`<li ${where_is == "b" ? "" : "class='hidden'"} id="bb_${
+		`<li ${where_is == "b" ? "" : "class='hidden'"} onclick="ScrollToThisImage('${img.id}')" id="bb_${
 		  img.id
 		}"> <a href="#${img.id}"><img src="${img.src}" alt="${
 		  img.alt
@@ -31,7 +31,7 @@ function whereIs(element) {
 	  ); // Add class as hidden if is not before
 	  bar_after.insertAdjacentHTML(
 		"beforeend",
-		`<li ${where_is == "a" ? "" : "class='hidden'"} id="ba_${
+		`<li ${where_is == "a" ? "" : "class='hidden'"} onclick="ScrollToThisImage('${img.id}')" id="ba_${
 		  img.id
 		}"> <a href="#${img.id}"><img src="${img.src}" alt="${
 		  img.alt
@@ -43,6 +43,16 @@ function whereIs(element) {
   
   window.onload = loadBars; // Load bars on page load
   
+  function ScrollToThisImage(id) {
+	console.log(id)
+	let img = document.getElementById(id)
+	console.log(img)
+	img.scrollIntoView({
+		behavior: 'auto',
+		inline: 'center'
+	});
+  }
+
   function refreshBars() {
 	let imgs = document.querySelectorAll("main img"); // All main images
   
