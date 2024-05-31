@@ -42,7 +42,7 @@ body {
 	text-align: center;
 	height: calc(100vh - 40vmin);
 	width: 100vw;
-	position: fixed;
+	position: relative;
 	overflow-y: auto;
 	scroll-behavior: smooth; /* Means anchor links will scroll smoothly */
   }
@@ -50,14 +50,18 @@ body {
 	list-style-type: none; /* No bullet points */
 	padding: 0;
   }
-  
   main img {
 	display: block;
 	height: 60vmin;
+	position: relative;
+	max-width: 100%;
 	margin: auto; /* Centered */
 	margin-bottom: 10vmin;
 	margin-top: 10vmin;
 	cursor: zoom-in;
+	border-radius: 10px;
+	object-fit: cover;
+	box-shadow: 0px 0px 60px 1px rgba(255, 255, 255, 0.2);
   }
 
   @media only screen and (max-width: 768px) {
@@ -122,6 +126,7 @@ body {
   #bar_before,
   #bar_after {
 	z-index: 1;
+	display: none;
 	position: fixed;
 	left: 0;
 	background: #111111;

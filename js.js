@@ -119,8 +119,22 @@ for (let x = 0; x < images.length; x++) {
 	// container.appendChild(li)
 }
 
-// let temp = document.querySelectorAll('img')
-// for (let x = 0; x < temp.length; x++) {
-// 	const element = temp[x];
-// 	element.setAttribute('onclick','OpenImage(this)')
-// }
+const observer = new IntersectionObserver(entries => {
+	entries.forEach(entry => {
+		console.log('Появился')
+		// если элемент появился
+		if (entry.isIntersecting) {
+		  // добавить ему CSS-класс
+		  entry.target.src = 'thumbs/'+entry.target.dataset.image+'.jpg'
+		  return
+		//   entry.target.classList.add('square-animation');
+		}
+	  });
+  });
+  
+  // Сообщить наблюдателю, какие элементы следует отслеживать
+document.querySelectorAll('main li img').forEach((i) => {
+    if (i) {
+        observer.observe(i);
+    }
+});
