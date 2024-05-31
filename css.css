@@ -53,11 +53,18 @@ body {
   
   main img {
 	display: block;
-	height: 90vmin;
+	height: 60vmin;
 	margin: auto; /* Centered */
 	margin-bottom: 10vmin;
 	margin-top: 10vmin;
 	cursor: zoom-in;
+  }
+
+  @media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+	main img{
+		height: 90vmin;
+	}
   }
   
   ::-webkit-scrollbar {
