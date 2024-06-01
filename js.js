@@ -105,7 +105,7 @@ function CloseImage() {
 	bg_for_big_image.style.animation = 'close .3s ease-in-out forwards'
 	setTimeout(function() {
 		big_image.style.display = 'none'
-		// img_in_big.src = 'loading.gif'
+		img_in_big.src = 'loading.gif'
 		bg_for_big_image.style.display = 'none'
 		bg_for_big_image.querySelector('img').src = 'loading.gif'
 	},500)
