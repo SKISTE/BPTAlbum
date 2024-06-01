@@ -90,12 +90,23 @@ function OpenImage(elem) {
 	big_image.style.display = 'flex'
 	big_image.style.animation = 'show .5s ease-in-out forwards'
 	img_in_big.src = 'images/'+elem.dataset.image+'.jpg'
+
+	bg_for_big_image.querySelector('img').src = 'images/'+elem.dataset.image+'.jpg'
+	
+
+	img_in_big.onload = function () {
+		bg_for_big_image.style.display = 'block'
+		bg_for_big_image.style.animation = 'show .5s ease-in-out forwards'
+	}
 }
 function CloseImage() {
 	big_image.style.animation = 'close .5s ease-in-out forwards'
+	bg_for_big_image.style.animation = 'close .5s ease-in-out forwards'
 	setTimeout(function() {
 		big_image.style.display = 'none'
-		img_in_big.src = 'loading.gif'
+		// img_in_big.src = 'loading.gif'
+		bg_for_big_image.style.display = 'none'
+		bg_for_big_image.querySelector('img').src = 'loading.gif'
 	},500)
 }
 

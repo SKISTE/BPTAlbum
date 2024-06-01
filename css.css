@@ -108,6 +108,7 @@ body {
   main {
 	scroll-snap-type: y mandatory;
 	scroll-padding: 10vmin;
+	width: 100%;
   }
   
   main li {
@@ -220,6 +221,19 @@ body {
 	max-width: 100%;
 	object-fit: contain;
 	text-align: center;
+}
+#bg_for_big_image{
+	position: absolute;
+	width: calc(100vw - 1vmin);
+	height: 100vh;
+	z-index: 1;
+	overflow: hidden;
+	display: none;
+}
+#bg_for_big_image img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 @keyframes show {
 	0%{
