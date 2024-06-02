@@ -95,14 +95,14 @@ function OpenImage(elem) {
 	setTimeout(function() {
 		bg_for_big_image.style.display = 'block'
 		// bg_for_big_image.style.animation = 'uncompress .5s ease-in-out forwards'
-		bg_for_big_image.style.animation = 'uncompress .5s ease-in-out forwards'
-	},300)
+		bg_for_big_image.style.animation = 'show .5s ease-in-out forwards'
+	},100)
 
 }
 function CloseImage() {
 	big_image.style.animation = 'close .5s .2s ease-in-out forwards'
 	// bg_for_big_image.style.animation = 'compress .3s ease-in-out forwards'
-	bg_for_big_image.style.animation = 'compress .3s ease-in-out forwards'
+	bg_for_big_image.style.animation = 'close .3s ease-in-out forwards'
 	setTimeout(function() {
 		big_image.style.display = 'none'
 		img_in_big.src = 'loading.gif'
